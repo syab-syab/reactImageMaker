@@ -2,37 +2,280 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 基幹 */
+
+html {
+  font-size: 62.5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  text-align: center;
+  font-size: 1.4rem;
+  background-color: rgb(223, 204, 180);
+  font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;;
+
+}
+
+:root {
+  --element-width: 50%;
+  --element-margin: 50px auto 0;
+
+  --responsive-width: 80%;
+}
+
+/* 画像ダウンロードボタンと画像元生成スペースに付ける */
+.non-display {
+  display: none;
+}
+
+section {
+  padding-bottom: 3rem;
+}
+
+/* ヘッダー部分 */
+
+header {
   color: white;
+  background: rgb(50, 34, 14);
+  padding: 17rem 3rem 8rem;
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.main-title {
+  margin: 0;
+  font-size: 4rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sub-title {
+  font-size: 2rem;
+}
+
+.require {
+  color: red;
+}
+/* 入力部分 */
+
+
+.forms {
+  text-align: left;
+  /* キャプチャースペースと同じ幅 */
+  width: var(--element-width);
+  margin: var(--element-margin);
+}
+
+.forms input, .forms textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid rgba(60, 59, 59, 0.4);
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  outline: none;
+  resize: none;
+  margin: 1rem 0 2rem;
+}
+
+.forms input:focus, .forms textarea:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset;
+}
+
+.forms textarea {
+  height: 15rem;
+}
+
+.forms label {
+  font-size: 2rem;
+}
+
+input[type="color"] {
+  height: 6rem;
+}
+
+
+/* キャプチャー(プレビュー)部分 */
+
+.preview-section {
+  background: white;
+  overflow-wrap: break-word;
+  border: black 1px solid;
+  color: black;
+  text-align: left;
+  font-size: 2rem;
+  width: var(--element-width);
+  margin: var(--element-margin);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+caption {
+  border-bottom: 1px solid black;
+  font-weight: bold;
+}
+
+
+th {
+  background: rgb(44, 177, 192);
+}
+
+caption, th, td {
+  padding: 1rem;
+  display: block;
+}
+
+
+#image-space {
+  margin-top: 4rem;
+}
+
+#created-image {
+  box-shadow: 0.2rem 0.2rem 0.4rem;
+}
+
+#image-download {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ボタンのスタイル */
+#create-preview, #make-image, #image-download {
+  color: white;
+  background-color: rgb(50, 34, 14);
+  display: block;
+  width: 200px;
+  margin: 40px auto 0;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ホバー */
+#create-preview:hover, #make-image:hover, #image-download:hover, .sns-share-btn > a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sns-share-btn {
+  margin-bottom: 1rem;
+}
+
+.sns-share-btn > a {
+  
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 10%;
+  background-color: rgb(50, 34, 14);
+  width: auto;
+  color: white;
+  text-decoration: none;
+}
+
+.sns-share-btn > a > span {
+  margin-left: 1rem;
+}
+
+
+/* スマホ・タブレット向けのレスポンシブのスタイル */
+
+@media (max-width: 768px) {
+
+
+  /* ヘッダー部分 */
+  header {
+    color: white;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-title {
+    font-size: 2rem;
   }
+
+  .sub-title {
+    font-size: 1rem;
+  }
+
+  
+  .forms {
+    text-align: left;
+    /* キャプチャースペースと同じ幅 */
+    width: 80%;
+    margin: 1rem auto 1rem;
+  }
+  
+  .forms input, .forms textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid rgba(60, 59, 59, 0.4);
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    outline: none;
+    resize: none;
+  }
+  
+  .forms input:focus, .forms textarea:focus {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset;
+  }
+  
+  .forms textarea {
+    height: 15rem;
+  }
+  
+  .forms label {
+    font-size: 1.5rem;
+  }
+
+
+  /* キャプチャー(プレビュー)部分 */
+
+  .preview-section {
+    overflow-wrap: break-word;
+    padding: 0.3rem;
+    border: black 1px solid;
+    color: black;
+    text-align: left;
+    font-size: 2rem;
+    /* 入力スペースと同じ幅 */
+    width: 80%;
+    margin: 1rem auto 1rem;
+  }
+
+
+  #created-image {
+    box-shadow: 0.2rem 0.2rem 0.4rem;
+  }
+
+
+  #image-download {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  /* ボタンのスタイル */
+  #create-preview, #make-image, #image-download {
+    display: block;
+    width: 200px;
+    margin: 40px auto 0;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #create-preview:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
 }
