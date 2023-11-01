@@ -30,13 +30,15 @@ function App() {
   const [color, setColor] = useState<string>("#000000")
 
   // capture state
-  const [preview, setPreview] = useState(false)
+  const [preview, setPreview] = useState<boolean>(false)
 
+  // download state
+  const [download, setDownload] = useState<boolean>(false)
 
   // --------- 関数 --------------
   // プレビュー作成
   const createImage = (): void => {
-    if (title == '' || place == '' || date == '' || time == '' ) {
+    if (title === '' || place === '' || date === '' || time === '' ) {
       alert("必須項目を入力してください。");
     } else {
       setPreview(true)
@@ -63,7 +65,7 @@ function App() {
       const imageDownload: any = document.getElementById("image-download");
       imageDownload.href = imgData;
     });
-
+    setDownload(true)
   }
 
   return (
@@ -99,7 +101,6 @@ function App() {
         {/* Create preview button */}
         <button id="create-preview" className="" onClick={createImage}>プレビューを見る</button>
       </section>
-
 
       {/* Preview section */}
       {/* [ToDo]長文が折り返されない問題を解決する */}
@@ -171,7 +172,6 @@ function App() {
         </table>
       </section>
 
-
       {/* Create image section */}
       <section id="create-image-button-section" className={preview ? "" : "non-display"}>
         <button id="make-image" onClick={createScreenshot}>画像にする</button>
@@ -179,19 +179,18 @@ function App() {
 
       {/* Image section */}
       {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
-      <section id="make-image-section" className={preview ? "" : "non-display"}>
+      <section id="make-image-section" className={download ? "" : "non-display"}>
         <div id="image-space">
-          <img src="" id="created-image" />
+          <img src="" id="created-image" alt='aaa' />
         </div>    
       </section>
 
       {/* Image download button section */}
       {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
-      <section id="image-download-button-section"  className={preview ? "" : "non-display"}>
+      <section id="image-download-button-section"  className={download ? "" : "non-display"}>
         <a href="" id="image-download" download="screenshot">画像ダウンロード</a>
       </section>
 
-      
       <Footer />
     </div>
   );

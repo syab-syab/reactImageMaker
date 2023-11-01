@@ -124,17 +124,13 @@ caption {
 
 th {
   background: rgb(44, 177, 192);
-  word-wrap: break-word;
-  white-space: normal;
-
+  /* word-wrap: break-word; */
 }
 
 caption, th, td {
   padding: 1rem;
   display: block;
-  word-wrap: break-word;
-  white-space: normal;
-
+  /* word-wrap: break-word; */
 }
 
 
