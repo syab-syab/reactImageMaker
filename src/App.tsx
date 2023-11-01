@@ -70,70 +70,101 @@ function App() {
     <div className="App">
       <Header />
 
-      {/* <!-- Input forms --> */}
+      {/* Input forms */}
       <section className="form-section">
         <form className="forms">
-          {/* <!-- Event name --> */}
+          {/* Event name */}
           <label htmlFor="title">イベント名<span className="require">*</span></label>
           <input type="text" id="title" name="event" placeholder="イベント名" onChange={(e) => setTitle(e.target.value)} />
-          {title}<br/>
-          {/* <!-- Place name --> */}
+          {/* Place name */}
           <label htmlFor="place">場所<span className="require">*</span></label>
           <input type="text" id="place" placeholder="場所" onChange={(e) => setPlace(e.target.value)} />
-          {place}<br/>
-          {/* <!-- Date --> */}
+          {/* Date */}
           <label htmlFor="date">日<span className="require">*</span></label>
           <input type="date" id="date" onChange={(e) => setDate(e.target.value)} />
-          {date}<br/>
-          {/* <!-- Time --> */}
+          {/*  Time  */}
           <label htmlFor="time">時間<span className="require">*</span></label>
           <input type="time" id="time" onChange={(e) => setTime(e.target.value)} />
-          {time}<br/>
-          {/* <!-- Content --> */}
+          {/* Content */}
           <label htmlFor="content">備考</label>
           <textarea className="" id="content" onChange={(e) => setContent(e.target.value)}></textarea>
-          {content}<br/>
-          {/* <!-- Background color --> */}
-          <label htmlFor="">背景色</label><input type="color" id="background-color" value={background} onChange={(e) => setBackground(e.target.value)} />
-          {/* <!-- Heading color --> */}
-          <label htmlFor="">見出しの色</label><input type="color" name="" id="heading-color" value={heading} onChange={(e) => setHeading(e.target.value)} />
-          {/* <!-- Font color --> */}
+          {/* Background color */}
+          <label htmlFor="background-color">背景色</label><input type="color" id="background-color" value={background} onChange={(e) => setBackground(e.target.value)} />
+          {/* Heading color */}
+          <label htmlFor="heading-color">見出しの色</label><input type="color" name="" id="heading-color" value={heading} onChange={(e) => setHeading(e.target.value)} />
+          {/* Font color */}
           <label htmlFor="font-color">文字色</label><input type="color" id="font-color" value={color} onChange={(e) => setColor(e.target.value)} />
         </form>
         <p><span className="require">*</span>は必須項目です。</p>
-        {/* <!-- Create preview button --> */}
+        {/* Create preview button */}
         <button id="create-preview" className="" onClick={createImage}>プレビューを見る</button>
       </section>
 
 
-      {/* <!-- Preview section--> */}
+      {/* Preview section */}
       {/* [ToDo]長文が折り返されない問題を解決する */}
-      <section id="capture" className={preview ? "preview-section" : "preview-section non-display"} style={{color: color, backgroundColor: background}}>
+      <section
+        id="capture"
+        className={preview ? "preview-section" : "preview-section non-display"}
+        style={{color: color, backgroundColor: background}}
+      >
         <table>
-          <caption><span id="origin-title">{title}</span></caption>
+          <caption>
+            <span id="origin-title">
+            {title}
+            </span>
+          </caption>
           <tbody>
           <tr>
-            <th className="heading" style={{backgroundColor: heading}}>場所</th>
+            <th
+              className="heading"
+              style={{backgroundColor: heading}}
+            >
+              場所
+            </th>
             <td>
-              <span id="origin-place">{place}</span>
+              <span id="origin-place">
+                {place}
+              </span>
             </td>
           </tr>
           <tr>
-            <th className="heading" style={{backgroundColor: heading}}>日にち</th>
+            <th
+              className="heading"
+              style={{backgroundColor: heading}}
+            >
+              日にち
+            </th>
             <td>
-              <span id="origin-date">{date}</span>
+              <span id="origin-date">
+                {date}
+              </span>
             </td>
           </tr>
           <tr>
-            <th className="heading" style={{backgroundColor: heading}}>時間</th>
+            <th
+              className="heading"
+              style={{backgroundColor: heading}}
+            >
+              時間
+            </th>
             <td>
-              <span id="origin-time">{time}</span>
+              <span id="origin-time">
+                {time}
+              </span>
             </td>
           </tr>
           <tr>
-            <th className="heading" style={{backgroundColor: heading}}>備考</th>
+            <th
+              className="heading"
+              style={{backgroundColor: heading}}
+            >
+              備考
+            </th>
             <td>
-              <span id="origin-content">{content}</span>
+              <span id="origin-content">
+                {content}
+              </span>
             </td>
           </tr>
           </tbody>
@@ -141,12 +172,12 @@ function App() {
       </section>
 
 
-      {/* <!-- Create image section --> */}
+      {/* Create image section */}
       <section id="create-image-button-section" className={preview ? "" : "non-display"}>
         <button id="make-image" onClick={createScreenshot}>画像にする</button>
       </section>
 
-      {/* <!-- Image section --> */}
+      {/* Image section */}
       {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
       <section id="make-image-section" className={preview ? "" : "non-display"}>
         <div id="image-space">
@@ -154,7 +185,7 @@ function App() {
         </div>    
       </section>
 
-      {/* <!-- Image download button section --> */}
+      {/* Image download button section */}
       {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
       <section id="image-download-button-section"  className={preview ? "" : "non-display"}>
         <a href="" id="image-download" download="screenshot">画像ダウンロード</a>

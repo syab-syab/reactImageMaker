@@ -41,9 +41,7 @@ section {
 header {
   color: white;
   background: rgb(50, 34, 14);
-  padding: 17rem 3rem 8rem;
-
-
+  padding: 8rem 3rem;
 }
 
 .main-title {
@@ -115,6 +113,7 @@ input[type="color"] {
 table {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
 }
 
 caption {
@@ -125,11 +124,17 @@ caption {
 
 th {
   background: rgb(44, 177, 192);
+  word-wrap: break-word;
+  white-space: normal;
+
 }
 
 caption, th, td {
   padding: 1rem;
   display: block;
+  word-wrap: break-word;
+  white-space: normal;
+
 }
 
 
