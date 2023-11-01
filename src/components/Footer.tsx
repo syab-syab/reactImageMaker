@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <footer>
-        ©イベント予定告知画像メーカー
+        ©Event Schedule Image Generator
       </footer>
     </>
   )
