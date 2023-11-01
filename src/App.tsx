@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import html2canvas from "html2canvas";
 
 function App() {
   // Event title
@@ -17,7 +18,7 @@ function App() {
   const [time, setTime] = useState<string>("")
 
   // Event content
-  const [content, setContent] = useState<string>("")
+  const [content, setContent] = useState<string>("特になし")
 
   // Background color
   const [background, setBackground] = useState<string>("#ffffff")
@@ -28,8 +29,42 @@ function App() {
   // Font color
   const [color, setColor] = useState<string>("#000000")
 
+  // capture state
+  const [preview, setPreview] = useState(false)
+
 
   // --------- 関数 --------------
+  // プレビュー作成
+  const createImage = (): void => {
+    if (title == '' || place == '' || date == '' || time == '' ) {
+      alert("必須項目を入力してください。");
+    } else {
+      setPreview(true)
+    }
+  }
+
+  const createScreenshot = (): void => {
+    // オプションの指定
+    const options = {
+    // 画質を良くする
+      scale: 3
+    }
+    const capture: any = document.getElementById("capture")
+    // フォームに入力したら画像を表示
+    html2canvas(capture, options).then(function(canvas) {
+      //imgのsrcに、生成した画像urlを入れて表示。
+      const imgData: string = canvas.toDataURL();
+      const createImage: any = document.getElementById("created-image");
+      console.log(imgData)
+      createImage.src = imgData;
+      // 表示される画像のサイズの調整
+      createImage.width = capture.clientWidth;
+      // aタグのhrefに生成した画像を入れてダウンロードできるようにする
+      const imageDownload: any = document.getElementById("image-download");
+      imageDownload.href = imgData;
+    });
+
+  }
 
   return (
     <div className="App">
@@ -67,54 +102,61 @@ function App() {
         </form>
         <p><span className="require">*</span>は必須項目です。</p>
         {/* <!-- Create preview button --> */}
-        <button id="create-preview" className="">プレビューを見る</button>
+        <button id="create-preview" className="" onClick={createImage}>プレビューを見る</button>
       </section>
 
+
       {/* <!-- Preview section--> */}
-      <section id="capture" className="preview-section non-display">
+      {/* [ToDo]長文が折り返されない問題を解決する */}
+      <section id="capture" className={preview ? "preview-section" : "preview-section non-display"} style={{color: color, backgroundColor: background}}>
         <table>
-          <caption><span id="origin-title"></span></caption>
+          <caption><span id="origin-title">{title}</span></caption>
+          <tbody>
           <tr>
-            <th className="heading">場所</th>
+            <th className="heading" style={{backgroundColor: heading}}>場所</th>
             <td>
-              <span id="origin-place"></span>
+              <span id="origin-place">{place}</span>
             </td>
           </tr>
           <tr>
-            <th className="heading">日にち</th>
+            <th className="heading" style={{backgroundColor: heading}}>日にち</th>
             <td>
-              <span id="origin-date"></span>
+              <span id="origin-date">{date}</span>
             </td>
           </tr>
           <tr>
-            <th className="heading">時間</th>
+            <th className="heading" style={{backgroundColor: heading}}>時間</th>
             <td>
-              <span id="origin-time"></span>
+              <span id="origin-time">{time}</span>
             </td>
           </tr>
           <tr>
-            <th className="heading">備考</th>
+            <th className="heading" style={{backgroundColor: heading}}>備考</th>
             <td>
-              <span id="origin-content"></span>
+              <span id="origin-content">{content}</span>
             </td>
           </tr>
+          </tbody>
         </table>
       </section>
 
+
       {/* <!-- Create image section --> */}
-      <section id="create-image-button-section" className="non-display">
-        <button id="make-image">画像にする</button>
+      <section id="create-image-button-section" className={preview ? "" : "non-display"}>
+        <button id="make-image" onClick={createScreenshot}>画像にする</button>
       </section>
 
       {/* <!-- Image section --> */}
-      <section id="make-image-section" className="non-display">
+      {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
+      <section id="make-image-section" className={preview ? "" : "non-display"}>
         <div id="image-space">
           <img src="" id="created-image" />
         </div>    
       </section>
 
       {/* <!-- Image download button section --> */}
-      <section id="image-download-button-section"  className="non-display">
+      {/* previewは便宜上のものだから後ほど新しいstateを定義する */}
+      <section id="image-download-button-section"  className={preview ? "" : "non-display"}>
         <a href="" id="image-download" download="screenshot">画像ダウンロード</a>
       </section>
 
