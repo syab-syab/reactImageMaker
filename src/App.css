@@ -136,15 +136,21 @@ caption, th, td {
 
 #image-space {
   margin-top: 4rem;
+  cursor: grab;
+}
+
+#make-image {
+  cursor: grab;
 }
 
 #created-image {
   box-shadow: 0.2rem 0.2rem 0.4rem;
+  cursor: grab;
 }
 
 #image-download {
   text-decoration: none;
-  cursor: pointer;
+  cursor: grab;
 }
 
 /* ボタンのスタイル */
