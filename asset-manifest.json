@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/reactImageMaker/static/css/main.6bb5a950.css",
-    "main.js": "/reactImageMaker/static/js/main.28882e0f.js",
+    "main.js": "/reactImageMaker/static/js/main.cdbf30e4.js",
     "static/js/787.a55022d2.chunk.js": "/reactImageMaker/static/js/787.a55022d2.chunk.js",
     "service-worker.js": "/reactImageMaker/service-worker.js",
     "index.html": "/reactImageMaker/index.html",
     "main.6bb5a950.css.map": "/reactImageMaker/static/css/main.6bb5a950.css.map",
-    "main.28882e0f.js.map": "/reactImageMaker/static/js/main.28882e0f.js.map",
+    "main.cdbf30e4.js.map": "/reactImageMaker/static/js/main.cdbf30e4.js.map",
     "787.a55022d2.chunk.js.map": "/reactImageMaker/static/js/787.a55022d2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6bb5a950.css",
-    "static/js/main.28882e0f.js"
+    "static/js/main.cdbf30e4.js"
   ]
 }
